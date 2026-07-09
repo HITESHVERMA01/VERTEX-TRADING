@@ -8,6 +8,8 @@ const navItems = [
   ["/support", "Support"],
 ];
 
+const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://vertex-dashboard-tan.vercel.app/";
+
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
@@ -37,7 +39,7 @@ function Navbar() {
             <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label={`Switch to ${dark ? "light" : "dark"} mode`}>
               {dark ? "☀" : "◐"}
             </button>
-            <a className="text-link" href="http://localhost:3001">Log in</a>
+            <a className="text-link" href={dashboardUrl}>Open dashboard</a>
             <Link className="button button-sm" to="/signup">Open account</Link>
           </div>
         </div>

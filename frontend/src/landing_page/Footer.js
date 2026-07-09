@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://vertex-dashboard-tan.vercel.app/";
+
 function Footer() {
   return (
     <footer className="site-footer">
@@ -10,7 +12,7 @@ function Footer() {
           <p>Invest with clarity. Trade with confidence.</p>
           <div className="status-pill"><span /> All systems operational</div>
         </div>
-        <div><h3>Platform</h3><Link to="/product">Products</Link><a href="http://localhost:3001">Trading dashboard</a><Link to="/pricing">Pricing</Link></div>
+        <div><h3>Platform</h3><Link to="/product">Products</Link><a href={dashboardUrl}>Open dashboard</a><Link to="/pricing">Pricing</Link></div>
         <div><h3>Company</h3><Link to="/about">About us</Link><Link to="/about">Careers</Link><Link to="/about">Press room</Link></div>
         <div><h3>Resources</h3><Link to="/support">Help center</Link><Link to="/support">Market education</Link><Link to="/support">Contact</Link></div>
       </div>

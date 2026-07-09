@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || "https://vertex-dashboard-tan.vercel.app/";
+
 function Hero() {
   return (
     <section className="hero section-pad">
@@ -10,7 +12,7 @@ function Hero() {
           <div className="eyebrow"><span>●</span> Investing, thoughtfully redesigned</div>
           <h1>Your money deserves a <em>clearer view.</em></h1>
           <p>One beautifully simple platform to invest, trade, and understand your wealth—without the noise.</p>
-          <div className="hero-actions"><Link className="button" to="/signup">Start investing <span>→</span></Link><a className="button button-ghost" href="http://localhost:3001">Explore dashboard</a></div>
+          <div className="hero-actions"><Link className="button" to="/signup">Start investing <span>→</span></Link><a className="button button-ghost" href={dashboardUrl}>Open dashboard</a></div>
           <div className="hero-trust"><div className="avatar-stack"><span>AS</span><span>RK</span><span>MV</span></div><div><strong>Trusted by 1.4M+ investors</strong><small>4.8/5 average platform rating</small></div></div>
         </div>
         <div className="terminal-card reveal delay-1" aria-label="Portfolio preview">
