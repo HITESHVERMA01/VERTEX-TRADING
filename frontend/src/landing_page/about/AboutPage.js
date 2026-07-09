@@ -1,15 +1,3 @@
-import React from "react";
-
-import Hero from "./Hero";
-import Team from "./Team";
-
-function PricingPage() {
-  return (
-    <>
-      <Hero />
-      <Team />
-    </>
-  );
-}
-
-export default PricingPage;
+import React from "react"; import OpenAccount from "../OpenAccount";
+function AboutPage(){return <main><section className="page-hero"><div className="section-shell"><span className="kicker">OUR PURPOSE</span><h1>Finance should create possibility,<br/>not anxiety.</h1><p>Vertex exists to make participating in India’s growth clearer, fairer, and more human.</p></div></section><section className="section-pad soft-section"><div className="section-shell about-story"><div><span className="kicker">WHY WE BUILT VERTEX</span><h2>Confidence begins with clarity.</h2></div><div><p>Too many financial products are designed around noise, urgency, and complexity. We imagined something different: a calm, transparent platform that respects your attention and puts useful information where you need it.</p><p>Today, we build tools for first-time investors and experienced traders alike—held to the same standard of simplicity, security, and thoughtful design.</p></div></div></section><section className="section-pad"><div className="section-shell"><div className="section-heading centered"><span className="kicker">OUR PRINCIPLES</span><h2>The values behind every decision.</h2></div><div className="values-grid"><article><span>01</span><h3>Clarity over complexity</h3><p>Every screen, price, and message should help you understand what happens next.</p></article><article><span>02</span><h3>Trust is earned daily</h3><p>Strong security and honest communication are the baseline, never the bonus.</p></article><article><span>03</span><h3>Long-term over loud</h3><p>We build for patient progress, not engagement tricks or market-day drama.</p></article></div></div></section><OpenAccount /></main>}
+export default AboutPage;

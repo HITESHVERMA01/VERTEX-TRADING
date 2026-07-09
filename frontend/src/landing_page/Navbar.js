@@ -1,63 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
+const navItems = [
+  ["/product", "Products"],
+  ["/pricing", "Pricing"],
+  ["/about", "Company"],
+  ["/support", "Support"],
+];
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
   return (
-    <nav
-      class="navbar navbar-expand-lg border-bottom"
-      style={{ backgroundColor: "#FFF" }}
-    >
-      <div class="container p-2">
-        <a class="navbar-brand" href="#">
-          <img
-            src="media/images/logo.svg"
-            style={{ width: "25%" }}
-            alt="Logo"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
+    <header className="site-header">
+      <nav className="nav-shell" aria-label="Primary navigation">
+        <Link to="/" className="brand" aria-label="Vertex home">
+          <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
+          <span>Vertex<span className="brand-dot">.</span></span>
+        </Link>
+        <button className="mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Toggle navigation">
+          <span /><span /><span />
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex" role="search">
-            <ul class="navbar-nav mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Signup
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  About
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Product
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Support
-                </a>
-              </li>
-            </ul>
-          </form>
+        <div className={`nav-content ${open ? "is-open" : ""}`}>
+          <div className="nav-links">
+            {navItems.map(([to, label]) => (
+              <NavLink key={to} to={to} onClick={() => setOpen(false)}>{label}</NavLink>
+            ))}
+          </div>
+          <div className="nav-actions">
+            <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label={`Switch to ${dark ? "light" : "dark"} mode`}>
+              {dark ? "☀" : "◐"}
+            </button>
+            <a className="text-link" href="http://localhost:3001">Log in</a>
+            <Link className="button button-sm" to="/signup">Open account</Link>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
 

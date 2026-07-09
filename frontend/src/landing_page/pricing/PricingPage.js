@@ -1,16 +1,4 @@
-import React from "react";
-import Hero from "./Hero";
-import Brokerage from "./Brokerage";
-import OpenAccount from "../OpenAccount";
-
-function PricingPage() {
-  return (
-    <>
-      <Hero />
-      <OpenAccount />
-      <Brokerage />
-    </>
-  );
-}
-
+import React from "react"; import {Link} from "react-router-dom"; import OpenAccount from "../OpenAccount";
+const rows=[["Account opening","₹0","₹0"],["Equity delivery","₹0","₹0"],["Intraday","₹20 or 0.03%","₹20 or 0.03%"],["Futures","₹20 per order","₹20 per order"],["Options","₹20 per order","₹20 per order"],["Direct mutual funds","₹0","₹0"]];
+function PricingPage(){return <main><section className="page-hero"><div className="section-shell"><span className="kicker">SIMPLE BY DESIGN</span><h1>Transparent pricing. Zero surprises.</h1><p>Keep more of every return with pricing that is easy to understand and impossible to misread.</p></div></section><section className="section-shell pricing-page"><div className="pricing-plan-grid"><article><span>LONG-TERM INVESTING</span><strong>₹0</strong><h3>Equity delivery</h3><p>Invest in stocks, ETFs, IPOs, and direct mutual funds without brokerage.</p><Link className="button button-ghost" to="/signup">Start investing</Link></article><article className="popular-plan"><i>MOST POPULAR</i><span>ACTIVE TRADING</span><strong><sup>₹</sup>20</strong><h3>Intraday & derivatives</h3><p>A flat, predictable fee per executed order—with no platform subscription.</p><Link className="button" to="/signup">Open free account</Link></article><article><span>ACCOUNT</span><strong>₹0</strong><h3>Opening fee</h3><p>Start in minutes with digital onboarding and no upfront account charge.</p><Link className="button button-ghost" to="/signup">Get started</Link></article></div><div className="charge-table"><div className="table-heading"><div><span className="kicker">THE FINE PRINT, MADE CLEAR</span><h2>Complete charge breakdown</h2></div><p>All prices exclude statutory taxes and exchange charges.</p></div><div className="table-scroll"><table><thead><tr><th>Service</th><th>Equity</th><th>F&O</th></tr></thead><tbody>{rows.map(r=><tr key={r[0]}>{r.map(c=><td key={c}>{c}</td>)}</tr>)}</tbody></table></div></div></section><OpenAccount /></main>}
 export default PricingPage;
