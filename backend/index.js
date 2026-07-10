@@ -212,6 +212,17 @@ app.post("/newOrder", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log("App started!");
-  mongoose.connect(uri);
-  console.log("DB started!");
+
+  if (!uri) {
+    console.error("MONGO_URL is not set. Please add it to your environment before starting the backend.");
+    process.exit(1);
+  }
+
+  mongoose
+    .connect(uri)
+    .then(() => console.log("DB started!"))
+    .catch((err) => {
+      console.error("MongoDB connection failed:", err.message);
+      process.exit(1);
+    });
 });
